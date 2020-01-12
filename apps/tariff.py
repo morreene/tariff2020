@@ -22,6 +22,8 @@ exporters_tuples = [tuple(x) for x in exporters[['exporterCode','exporterName']]
 hs = pd.read_sql_query("SELECT * FROM hs", cnx)
 hs_tuples = [tuple(x) for x in hs[['hs','hs_desc']].values]
 
+cnx.close()
+
 page_content = html.Div([
                         # html.Br(),
                         # html.H3('This is tariff page'),
@@ -30,14 +32,14 @@ page_content = html.Div([
                                 dbc.Col([
                                     html.P('Importer'),
                                     dcc.Dropdown(
-                                        id='dropdown_1',
+                                        id='dropdown_importer',
                                         # options=[{'label': i, 'value': i} for i in ['Select','China', 'Argentina', 'Belgium']],
                                         # options=[{'label': i, 'value': i} for i in [1,2,3]],
                                         options=[{'label': i[1], 'value': i[0]} for i in importers_tuples], # See above
 
                                         # multi=True,
                                         # value='0. summary',
-                                        value='1. economic environment',
+                                        value=156,
                                         clearable=False
                                     ),
                                     ], width=2, align="center"
@@ -46,11 +48,11 @@ page_content = html.Div([
                                     [
                                     html.P('Exporter'),
                                     dcc.Dropdown(
-                                        id='dropdown_2',
+                                        id='dropdown_exporter',
                                         # options=[{'label': i, 'value': i} for i in member_list],
                                         # options=[{'label': i, 'value': i} for i in [5,7,8]], # See above
                                         options=[{'label': i[1], 'value': i[0]} for i in exporters_tuples], # See above
-                                        value='ALB',
+                                        value=158,
                                         clearable=False
                                     ),
                                     ], width=2
@@ -59,7 +61,7 @@ page_content = html.Div([
                                     [
                                     html.P('Products'),
                                     dcc.Dropdown(
-                                        id='dropdown_2',
+                                        id='dropdown_hs',
                                         # options=[{'label': i, 'value': i} for i in member_list],
                                         # options=[{'label': i, 'value': i} for i in [5,7,8]], # See above
                                         options=[{'label': i[1], 'value': i[0]} for i in hs_tuples], # See above
@@ -88,7 +90,7 @@ page_content = html.Div([
                         ),
                     html.Br(),
                     html.H5('This is tariff page'),
-                    html.Div(id='table-container')
+                    html.Div(id='result-container')
              ], className='container')
 
 layout = html.Div([
@@ -96,3 +98,22 @@ layout = html.Div([
     commonmodules.get_menu(),
     page_content,
     ])
+
+
+@app.callback(
+        # dash.dependencies.Output('result-container', 'children'),
+        Output('result-container', 'children'),
+        [Input('dropdown_importer', 'value'),
+         Input('dropdown_exporter', 'value'),
+         Input('dropdown_hs', 'value'),
+         Input('search-button', 'n_clicks')]
+        # [dash.dependencies.State('search-input', 'value')]
+    )
+def display_table(dropdown_value_1, dropdown_value_2, dropdown_value_3, n_clicks):
+    # dff = df[(df['Cat'].str.contains(dropdown_value_1)) & (df['ConcernedCountriesCode'].str.contains(dropdown_value_2))]
+
+
+    return html.Div([
+            # dbc.Alert('SELECTION: topic="'+ dropdown_value_1 + '", member="' + dropdown_value_2 + '", search="' + search_str + '"', color="info"),
+dbc.Alert('Importer: '+ str(dropdown_value_1) + ' Exporter: ' + str(dropdown_value_2) + ' HS: ' + dropdown_value_3),
+])
