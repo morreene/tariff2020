@@ -21,6 +21,7 @@ def get_menu():
     nav_item_3 = dbc.NavItem(dbc.NavLink("Tariff", href="/tariff"))
     nav_item_4 = dbc.NavItem(dbc.NavLink("About", href="/about"))
     nav_item_5 = dbc.NavItem(dbc.NavLink("Help", href="/help"))
+    nav_item_6 = dbc.NavItem(dbc.NavLink("Search[fater]", href="/search"))
 
     logo = dbc.Navbar(
         dbc.Container(
@@ -40,7 +41,7 @@ def get_menu():
                 dbc.NavbarToggler(id="navbar-toggler2"),
                 dbc.Collapse(
                     dbc.Nav(
-                        [nav_item_1, nav_item_2, nav_item_3, nav_item_4, nav_item_5], className="ml-auto", navbar=True
+                        [nav_item_1, nav_item_2, nav_item_3, nav_item_4, nav_item_5, nav_item_6], className="ml-auto", navbar=True
                     ),
                     id="navbar-collapse2",
                     navbar=True,

@@ -3,7 +3,7 @@ import dash_html_components as html
 from dash.dependencies import Input, Output, State
 
 from app import app
-from apps import linechart, home, tariff, about, help
+from apps import linechart, home, tariff, about, help, search
 
 
 app.layout = html.Div([
@@ -20,6 +20,8 @@ def display_page(pathname):
          return linechart.layout
     elif pathname == '/tariff':
          return tariff.layout
+    elif pathname == '/search':
+         return search.layout
     elif pathname == '/about':
          return about.layout
     elif pathname == '/help':
