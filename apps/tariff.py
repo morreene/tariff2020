@@ -11,15 +11,16 @@ from app import app
 
 # Create connection with sqlite
 cnx = sqlite3.connect('data.db')
-importers = pd.read_sql_query("SELECT * FROM importers", cnx)
-# member = pd.read_sql_query("SELECT * FROM all_mem", cnx)
-# member_dict = dict(zip(member['MemberCode'], member['Member']))
-importers_tuples = [tuple(x) for x in importers[['importerCode','importerName']].values]
+# importers = pd.read_sql_query("SELECT * FROM importers", cnx)
+# # member = pd.read_sql_query("SELECT * FROM all_mem", cnx)
+# # member_dict = dict(zip(member['MemberCode'], member['Member']))
+# importers_tuples = [tuple(x) for x in importers[['importerCode','importerName']].values]
+importers_tuples = [(156,'China'),('840', 'USA')]
 
-exporters = pd.read_sql_query("SELECT * FROM exporters", cnx)
-exporters_tuples = [tuple(x) for x in exporters[['exporterCode','exporterName']].values]
+exporters = pd.read_sql_query("SELECT * FROM ref_partner", cnx)
+exporters_tuples = [tuple(x) for x in exporters[['partner','name']].values]
 
-hs = pd.read_sql_query("SELECT * FROM hs", cnx)
+hs = pd.read_sql_query("SELECT * FROM ref_hs", cnx)
 hs_tuples = [tuple(x) for x in hs[['hs','hs_desc']].values]
 
 cnx.close()
