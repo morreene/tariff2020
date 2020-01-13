@@ -39,7 +39,8 @@ page_content = html.Div([
                                         # multi=True,
                                         # value='0. summary',
                                         value='156',
-                                        clearable=False
+                                        clearable=False,
+                                        
                                     ),
                                     ], width=2, align="center"
                                 ),

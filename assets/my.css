@@ -1,0 +1,15 @@
+/* #dropdown_importer .Select--multi .Select-value {
+  background-color: #ff4444;
+  color: #fff;
+}
+
+#dropdown_importer .VirtualizedSelectFocusedOption {
+  background-color: #ffeedd;
+} */
+
+.VirtualizedSelectOption {
+  white-space: nowrap;
+  font-size: .9em;
+  /* overflow: scroll; */
+  /* text-overflow: ellipsis; */
+}
