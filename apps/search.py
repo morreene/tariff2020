@@ -29,7 +29,7 @@ page_content = html.Div([
                         dbc.Row(
                             [
                                 dbc.Col([
-                                    html.P('Importer'),
+                                    html.Span('Importer'),
                                     dcc.Dropdown(
                                         id='dropdown_importer',
                                         # options=[{'label': i, 'value': i} for i in ['Select','China', 'Argentina', 'Belgium']],
@@ -40,13 +40,13 @@ page_content = html.Div([
                                         # value='0. summary',
                                         value='156',
                                         clearable=False,
-                                        
+
                                     ),
                                     ], width=2, align="center"
                                 ),
                                 dbc.Col(
                                     [
-                                    html.P('Exporter'),
+                                    html.Span('Exporter'),
                                     dcc.Dropdown(
                                         id='dropdown_exporter',
                                         options=[{'label': i[1], 'value': i[0]} for i in exporters_tuples], # See above
@@ -57,25 +57,25 @@ page_content = html.Div([
                                 ),
                                 dbc.Col(
                                     [
-                                    html.P('Products'),
+                                    html.Span('Products'),
                                     dcc.Dropdown(
                                         id='dropdown_hs',
                                         options = hs_dict,
                                         value='100620',
                                         clearable=False
                                     ),
-                                    ], width=6
+                                    ], width=7
                                 ),
                                 dbc.Col(
                                     [
-                                    html.P('Search'),
+                                    html.Span('\u00A0'),
                                     dbc.Button('Search', id="search-button", className="mr-2", color="info",),
-                                    ], width=2
+                                    ], width=1
                                 ),
                             ],
                         ),
-                    html.Br(),
-                    html.H5('Test varable: Importer: China; Exporter: Laos; HS: 100620'),
+                    html.Br(),html.Br(),
+                    html.P('Testing variables: Importer: China; Exporter: Laos; Product: HS 100620'),
                     html.Div(id='search-result-container')
              ], className='container')
 
